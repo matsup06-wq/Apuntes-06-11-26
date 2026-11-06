@@ -1,0 +1,62 @@
+
+import java.util.Scanner;
+
+public class TablaHash {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] tabla = new int[10];
+        boolean[] ocupado = new boolean[10];
+
+        for (int i = 0; i < 6; i++) {
+            System.out.print("Ingresa un numero: ");
+            int numero = sc.nextInt();
+
+            int posicion = Math.floorMod(numero, 10);
+
+            while (ocupado[posicion]) {
+                posicion = (posicion + 1) % 10;
+            }
+
+            tabla[posicion] = numero;
+            ocupado[posicion] = true;
+        }
+
+        System.out.println("\nTABLA HASH");
+
+        for (int i = 0; i < 10; i++) {
+            if (ocupado[i]) {
+                System.out.println(i + " -> " + tabla[i]);
+            } else {
+                System.out.println(i + " -> Vacio");
+            }
+        }
+
+        System.out.print("\nNumero a buscar: ");
+        int buscar = sc.nextInt();
+
+        int posicion = Math.floorMod(buscar, 10);
+        boolean encontrado = false;
+
+        for (int i = 0; i < 10; i++) {
+            if (!ocupado[posicion]) {
+                break;
+            }
+
+            if (tabla[posicion] == buscar) {
+                encontrado = true;
+                break;
+            }
+
+            posicion = (posicion + 1) % 10;
+        }
+
+        if (encontrado) {
+            System.out.println("Encontrado en posicion: " + posicion);
+        } else {
+            System.out.println("Numero no encontrado");
+        }
+
+        sc.close();
+    }
+}
