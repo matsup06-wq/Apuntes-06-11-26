@@ -1,0 +1,17 @@
+
+1. ¿Qué números intentan almacenarse en la misma posición?
+
+Los números 18 y 38, porque al aplicar la función hash ambos generan la posición 8.
+
+2. ¿Por qué se produce una colisión?
+
+Porque dos números diferentes generan la misma posición al aplicar la función hash.
+
+3. ¿Qué problema se presenta cuando dos elementos generan la misma posición?
+
+Que los dos números no pueden guardarse directamente en la misma posición del arreglo, por lo que se necesita encontrar otro espacio para evitar perder información.
+
+4. ¿Qué estrategia propondrías para solucionar este problema?
+
+Utilizaría el sondeo lineal, que consiste en buscar la siguiente posición disponible cuando ocurre una colisión. Por ejemplo, el 18 se guarda en la posición 8 y el 38 en la posición 9.
+
